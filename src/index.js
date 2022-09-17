@@ -36,9 +36,12 @@ async function getBooksAndMoviesAsync() {
   try {
     const [books, movies] = await Promise.all([
       asyncFetchBooks(),
-      asyncFetchMovies(),
+      asyncFetchMovies()
     ]);
-    return { books, movies };
+    return {
+      books,
+      movies
+    };
   } catch (error) {
     console.log("Error fetching books and movies", error);
     return error;
@@ -51,31 +54,22 @@ async function getBooksOrMoviesAsync() {
 }
 
 getBooksAndMoviesAsync()
-  .then((results) => {
-    console.log("movies and books", {
+  .then(results => {
+    console.log("movies AND books", {
       movies: results.movies,
-      books: results.books,
+      books: results.books
     });
   })
-  .catch((error) => {
+  .catch(error => {
     console.error("Error in getBooksAndMoviesAsync execution", error);
   });
 
 getBooksOrMoviesAsync()
-  .then((results) => {
+  .then(results => {
     console.log("movies OR books", {
-      results,
+      results
     });
   })
-  .catch((error) =>
+  .catch(error =>
     console.error("Error in getBooksOrMoviesAsync execution", error)
   );
-
-// function wait(delay) {
-//   return new Promise((resolve) => setTimeout(resolve, delay));
-// }
-// let delayedFunc = () => {
-//   console.log("Done");
-//   return { id: 1, name: "Bob" };
-// };
-// wait(3000).then(delayedFunc).then(res => console.log(res));
