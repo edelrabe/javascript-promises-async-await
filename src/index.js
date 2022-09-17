@@ -60,11 +60,15 @@ getBooksAndMoviesAsync().then((results) => {
   });
 });
 
-getBooksOrMoviesAsync().then((results) => {
-  console.log("movies OR books", {
-    results,
-  });
-});
+getBooksOrMoviesAsync()
+  .then((results) => {
+    console.log("movies OR books", {
+      results,
+    });
+  })
+  .catch((error) =>
+    console.error("Error in getBooksOrMoviesAsync execution", error)
+  );
 
 // function wait(delay) {
 //   return new Promise((resolve) => setTimeout(resolve, delay));
